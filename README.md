@@ -25,7 +25,4 @@ Create a folder in htdocs folder located inside the xampp folder in the PC. Open
 ```bash
   npm install
 ```
-4. Run the code
-```bash
-  npm start
-```
+4. To Run the code type "localhost/Brute-Force-using-Python/login3.html" on your web browser.

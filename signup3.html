@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+    <style>
+        body {
+            background-image: url('https://th.bing.com/th/id/OIG1.p_UucIwNBT9lQlpgHSe3?w=1024&h=1024&rs=1&pid=ImgDetMain');
+            background-color: #f0f0f0; /* Fallback color if the image is not available */
+            background-size: cover;
+            background-repeat: no-repeat;
+            min-height: 100vh; /* Full height of the viewport */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: Arial, sans-serif;
+        }
+
+        .signup-container {
+                background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent white background */
+                padding: 20px;
+                border-radius: 10px;
+                box-shadow: 0 0 20px rgba(0, 0, 0, 0.2); /* Soft shadow effect */
+                width: 300px;
+                max-width: 90%; /* Responsive max-width */
+        }
+
+        h2 {
+            color: rgb(31, 31, 223);
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #333;
+        }
+
+        input[type="text"],
+        input[type="password"],
+        input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box; /* Ensure padding and border are included in the width */
+            font-size: 16px;
+        }
+
+        .error {
+            color: red;
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+
+        input[type="submit"] {
+            background-color: rgb(31, 31, 223);
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: rgb(31, 31, 223);
+        }
+    </style>
+</head>
+<body>  
+    <div class="signup-container">
+        <h2>Sign Up</h2>
+        <form id="signupForm" onsubmit="return validateForm()" action="connect3.php" method="post">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username">
+            <span id="usernameError" class="error"></span>
+            
+            <label for="email">Email:</label>
+            <input type="text" id="email" name="email">
+            <span id="emailError" class="error"></span>
+            
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password">
+            <span id="passwordError" class="error"></span>
+            
+            <label for="confirmPassword">Confirm Password:</label>
+            <input type="password" id="confirmPassword" name="confirmPassword">
+            <span id="confirmPasswordError" class="error"></span>
+            
+            <input type="submit" value="Sign Up">
+        </form>
+    </div>
+
+    <script>
+        function validateForm() {
+            var username = document.getElementById('username').value.trim();
+            var email = document.getElementById('email').value.trim();
+            var password = document.getElementById('password').value;
+            var confirmPassword = document.getElementById('confirmPassword').value;
+
+            var usernameError = document.getElementById('usernameError');
+            var emailError = document.getElementById('emailError');
+            var passwordError = document.getElementById('passwordError');
+            var confirmPasswordError = document.getElementById('confirmPasswordError');
+
+            // Reset previous error messages
+            usernameError.textContent = '';
+            emailError.textContent = '';
+            passwordError.textContent = '';
+            confirmPasswordError.textContent = '';
+
+            var isValid = true;
+
+            // Username validation
+            if (username === '') {
+                usernameError.textContent = 'Username is required';
+                isValid = false;
+            }
+
+            // Email validation
+            if (email === '') {
+                emailError.textContent = 'Email is required';
+                isValid = false;
+            } else if (!isValidEmail(email)) {
+                emailError.textContent = 'Invalid email format';
+                isValid = false;
+            }
+
+            // Password validation
+            if (password === '') {
+                passwordError.textContent = 'Password is required';
+                isValid = false;
+            } else if (password.length < 5) {
+                passwordError.textContent = 'Password must be 4 characters long';
+                isValid = false;
+            } if (!/[a-z]/.test(password)) {
+                passwordError.textContent = 'Password must contain at least one lowercase letter';
+                return;
+              } else if (!/[0-9]/.test(password)) {
+                passwordError.textContent = 'only number';
+                isValid = false;
+            }
+
+            // Confirm password validation
+            if (confirmPassword === '') {
+                confirmPasswordError.textContent = 'Please confirm your password';
+                isValid = false;
+            } else if (confirmPassword !== password) {
+                confirmPasswordError.textContent = 'Passwords do not match';
+                isValid = false;
+            }
+
+            return isValid;
+        }
+
+        function isValidEmail(email) {
+            var emailRegex = /\S+@\S+\.\S+/;
+            return emailRegex.test(email);
+        }
+    </script>
+</body>
+</html>

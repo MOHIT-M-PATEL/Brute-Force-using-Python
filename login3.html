@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <style>
+       
+       * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-image: url('https://th.bing.com/th/id/OIG1.p_UucIwNBT9lQlpgHSe3?w=1024&h=1024&rs=1&pid=ImgDetMain');
+    min-height: 100vh; /* Using viewport height to cover the entire screen */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Using a more modern sans-serif font */
+    color: #333; /* Darkened text color for better contrast */
+}
+
+.loginForm {
+
+    background-color: white;
+    padding: 30px; /* Increased padding for better spacing */
+    border-radius: 10px;
+   
+    width: 100%;
+    max-width: 400px; /* Responsive max-width */
+}
+
+h1, h2 {
+    text-align: center; /* Centering headings for better alignment */
+    margin-bottom: 20px; /* Adding space below headings */
+}
+
+.error {
+    color: red;
+    margin-top: 5px; /* Adding space above error messages */
+}
+
+label {
+    display: block; /* Ensuring labels are on their own line */
+    margin-bottom: 10px; /* Adding space below labels for better spacing */
+}
+
+input[type="text"],
+input[type="password"],
+button {
+    width: 100%; /* Making form elements full-width for responsiveness */
+    padding: 12px; /* Increased padding for better touch interaction */
+    margin-bottom: 15px; /* Adding more space between form elements */
+    border-radius: 8px; /* Rounded corners for form elements */
+    border: 1px solid #ccc; /* Adding a subtle border for distinction */
+    box-sizing: border-box; /* Including padding and border in element's total width/height */
+    font-size: 16px; /* Increased font size for better readability */
+}
+
+button {
+    background-color: #007bff; /* Updating button color for better visibility */
+    color: #fff; /* White text color for better contrast */
+    border: none; /* Removing default button border */
+    cursor: pointer; /* Changing cursor on hover for better feedback */
+    transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+}
+
+button:hover {
+    background-color: #0056b3; /* Darker color on hover for interactive feel */
+}
+
+a {
+    color: #007bff; /* Changing link color for better visibility */
+    text-decoration: none; /* Removing default underline */
+}
+
+a:hover {
+    text-decoration: underline; /* Underline on hover for better indication */
+}
+.lol{
+    background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent white background */
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2); /* Soft shadow effect */
+            width: 300px;
+            max-width: 90%; /* Responsive max-width */
+}
+
+    </style>
+</head>
+<body>
+    <div class="lol">
+    <h1>Pizza House</h1>
+    <h2>Login</h2>
+   
+    <form id="loginForm" onsubmit="validateForm()" action="login3.php" method="post">
+        <label for="username">Username:</label><br>
+        <input type="text" id="username" name="username"><span id="usernameError" class="error"></span><br>
+        
+        <label for="password">Password:</label><br>
+        <input type="password" id="password" name="password"><span id="passwordError" class="error"></span><br><br>
+        
+        <button type="submit" name="login">Login</button>
+
+    </form>
+    
+    <p>Don't have an account? <a href="signup3.html">Sign Up</a></p>
+    </div>
+    <script>
+        function validateForm() {
+            var username = document.getElementById('username').value.trim();
+            var password = document.getElementById('password').value;
+
+            var usernameError = document.getElementById('usernameError');
+            var passwordError = document.getElementById('passwordError');
+
+            // Reset previous error messages
+            usernameError.textContent = '';
+            passwordError.textContent = '';
+
+            var isValid = true;
+
+            // Username validation
+            if (username === '') {
+                usernameError.textContent = 'Username is required';
+                isValid = false;
+            }
+
+            // Password validation
+            if (password === '') {
+                passwordError.textContent = 'Password is required';
+                isValid = false;
+            }
+
+            return isValid;
+        }
+    </script>
+</body>
+</html>
